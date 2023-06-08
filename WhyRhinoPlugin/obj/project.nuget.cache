@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nEFr2HkzH0dO2QOXmmVoPlvq7J98Q1L+71FdRRhFLvZdd2cafDeGx6E5GvilV0Cx3OEg10mDq1ge/64IgeKmTA==",
+  "dgSpecHash": "s3fp7Pj3FD7NGJKlpeo8zTENuPA/ZJfzWtppjYIlasTti+5ZwQJQUCrARHe0UUu6JvgvWqYf47N+eUZnPn226A==",
   "success": true,
-  "projectFilePath": "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
+  "projectFilePath": "C:\\Users\\90434\\Desktop\\AutoDeisign\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\90434\\.nuget\\packages\\rhinocommon\\7.13.21348.13001\\rhinocommon.7.13.21348.13001.nupkg.sha512"
   ],

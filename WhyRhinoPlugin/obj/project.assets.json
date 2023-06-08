@@ -71,11 +71,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
+      "projectUniqueName": "C:\\Users\\90434\\Desktop\\AutoDeisign\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
       "projectName": "WhyRhinoPlugin",
-      "projectPath": "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
+      "projectPath": "C:\\Users\\90434\\Desktop\\AutoDeisign\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
       "packagesPath": "C:\\Users\\90434\\.nuget\\packages\\",
-      "outputPath": "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\obj\\",
+      "outputPath": "C:\\Users\\90434\\Desktop\\AutoDeisign\\WhyRhinoPlugin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\90434\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -92,8 +92,8 @@
         "net48": {
           "targetAlias": "net48",
           "projectReferences": {
-            "D:\\ECADI\\WhyRhinoPlugin\\WhyWindowsForms\\WhyWindowsForms.csproj": {
-              "projectPath": "D:\\ECADI\\WhyRhinoPlugin\\WhyWindowsForms\\WhyWindowsForms.csproj"
+            "C:\\Users\\90434\\Desktop\\AutoDeisign\\WhyWindowsForms\\WhyWindowsForms.csproj": {
+              "projectPath": "C:\\Users\\90434\\Desktop\\AutoDeisign\\WhyWindowsForms\\WhyWindowsForms.csproj"
             }
           }
         }

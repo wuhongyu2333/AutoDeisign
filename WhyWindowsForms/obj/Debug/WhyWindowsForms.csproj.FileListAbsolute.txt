@@ -9,3 +9,14 @@ D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.Generat
 D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.CoreCompileInputs.cache
 D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.exe
 D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.pdb
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\WhyWindowsForms.exe.config
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\WhyWindowsForms.exe
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\WhyWindowsForms.pdb
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.AssemblyReference.cache
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.SuggestedBindingRedirects.cache
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.Form1.resources
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.Properties.Resources.resources
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.GenerateResource.cache
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.CoreCompileInputs.cache
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.exe
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.pdb
