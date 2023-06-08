@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nEFr2HkzH0dO2QOXmmVoPlvq7J98Q1L+71FdRRhFLvZdd2cafDeGx6E5GvilV0Cx3OEg10mDq1ge/64IgeKmTA==",
+  "success": true,
+  "projectFilePath": "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\90434\\.nuget\\packages\\rhinocommon\\7.13.21348.13001\\rhinocommon.7.13.21348.13001.nupkg.sha512"
+  ],
+  "logs": []
+}

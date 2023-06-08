@@ -1,0 +1,13 @@
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\bin\Debug\net48\WhyRhinoPlugin.rhp
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\bin\Debug\net48\WhyRhinoPlugin.pdb
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.csproj.AssemblyReference.cache
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.GeneratedMSBuildEditorConfig.editorconfig
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.AssemblyInfoInputs.cache
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.AssemblyInfo.cs
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.csproj.CoreCompileInputs.cache
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.rhp
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.pdb
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.exe
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.pdb
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.exe.config
+D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.csproj.CopyComplete

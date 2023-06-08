@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj": {}
+  },
+  "projects": {
+    "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
+        "projectName": "WhyRhinoPlugin",
+        "projectPath": "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
+        "packagesPath": "C:\\Users\\90434\\.nuget\\packages\\",
+        "outputPath": "D:\\ECADI\\WhyRhinoPlugin\\WhyRhinoPlugin\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\90434\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {
+              "D:\\ECADI\\WhyRhinoPlugin\\WhyWindowsForms\\WhyWindowsForms.csproj": {
+                "projectPath": "D:\\ECADI\\WhyRhinoPlugin\\WhyWindowsForms\\WhyWindowsForms.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "dependencies": {
+            "RhinoCommon": {
+              "include": "Compile, Build",
+              "target": "Package",
+              "version": "[7.13.21348.13001, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ECADI\\WhyRhinoPlugin\\WhyWindowsForms\\WhyWindowsForms.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\ECADI\\WhyRhinoPlugin\\WhyWindowsForms\\WhyWindowsForms.csproj",
+        "projectName": "WhyWindowsForms",
+        "projectPath": "D:\\ECADI\\WhyRhinoPlugin\\WhyWindowsForms\\WhyWindowsForms.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

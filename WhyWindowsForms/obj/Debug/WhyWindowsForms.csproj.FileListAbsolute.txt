@@ -1,0 +1,11 @@
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\bin\Debug\WhyWindowsForms.exe.config
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\bin\Debug\WhyWindowsForms.exe
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\bin\Debug\WhyWindowsForms.pdb
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.AssemblyReference.cache
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.SuggestedBindingRedirects.cache
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.Form1.resources
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.Properties.Resources.resources
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.GenerateResource.cache
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.CoreCompileInputs.cache
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.exe
+D:\ECADI\WhyRhinoPlugin\WhyWindowsForms\obj\Debug\WhyWindowsForms.pdb

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhyRhinoPlugin", "WhyRhinoPlugin.csproj", "{0B5DB874-8557-41C9-9E88-AA6E35CF7FF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhyWindowsForms", "..\WhyWindowsForms\WhyWindowsForms.csproj", "{2CEA9D35-6E8B-4A7D-B252-C7A899A92987}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B5DB874-8557-41C9-9E88-AA6E35CF7FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B5DB874-8557-41C9-9E88-AA6E35CF7FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B5DB874-8557-41C9-9E88-AA6E35CF7FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5DB874-8557-41C9-9E88-AA6E35CF7FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CEA9D35-6E8B-4A7D-B252-C7A899A92987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEA9D35-6E8B-4A7D-B252-C7A899A92987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEA9D35-6E8B-4A7D-B252-C7A899A92987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEA9D35-6E8B-4A7D-B252-C7A899A92987}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8924A466-5ACA-42E0-821E-C17127BC9620}
+	EndGlobalSection
+EndGlobal
