@@ -2,6 +2,31 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.8": {
+      "Grasshopper/7.3.21053.23031": {
+        "type": "package",
+        "dependencies": {
+          "RhinoCommon": "[7.3.21053.23031]"
+        },
+        "compile": {
+          "lib/net45/GH_IO.dll": {
+            "related": ".XML"
+          },
+          "lib/net45/Grasshopper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/GH_IO.dll": {
+            "related": ".XML"
+          },
+          "lib/net45/Grasshopper.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/Grasshopper.targets": {}
+        }
+      },
       "RhinoCommon/7.13.21348.13001": {
         "type": "package",
         "compile": {
@@ -34,6 +59,23 @@
     }
   },
   "libraries": {
+    "Grasshopper/7.3.21053.23031": {
+      "sha512": "3d+Jgu+YrSTG0tETWbOQSBD4jPDwlwgWqNzAhSunykGUw+1/80lGEXmGnqJdHSg98+L+vBfjmlPhh2Ams8ikKw==",
+      "type": "package",
+      "path": "grasshopper/7.3.21053.23031",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Grasshopper.targets",
+        "grasshopper.7.3.21053.23031.nupkg.sha512",
+        "grasshopper.nuspec",
+        "grasshopper.png",
+        "lib/net45/GH_IO.XML",
+        "lib/net45/GH_IO.dll",
+        "lib/net45/Grasshopper.dll",
+        "lib/net45/Grasshopper.xml"
+      ]
+    },
     "RhinoCommon/7.13.21348.13001": {
       "sha512": "JQdaNw61ddBqIe08E9O4N/grwrN1hjDHcYW7tWylwCZyFR7SepoCD4NS+6LN6+oSQhNbhLi9Bf+hQOFYFdRAEA==",
       "type": "package",
@@ -61,6 +103,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8": [
+      "Grasshopper >= 7.3.21053.23031",
       "RhinoCommon >= 7.13.21348.13001",
       "WhyWindowsForms >= 1.0.0"
     ]
@@ -108,6 +151,10 @@
       "net48": {
         "targetAlias": "net48",
         "dependencies": {
+          "Grasshopper": {
+            "target": "Package",
+            "version": "[7.3.21053.23031, )"
+          },
           "RhinoCommon": {
             "include": "Compile, Build",
             "target": "Package",
@@ -117,5 +164,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "检测到的包版本在依赖项约束之外: Grasshopper 7.3.21053.23031 需要 RhinoCommon (= 7.3.21053.23031)，但版本 RhinoCommon 7.13.21348.13001 已解决。",
+      "libraryId": "RhinoCommon",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.8"
+      ]
+    }
+  ]
 }

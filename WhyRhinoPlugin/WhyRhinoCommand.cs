@@ -28,7 +28,7 @@ namespace WhyRhinoPlugin
             // Usually commands in render plug-ins are used to modify settings and behavior.
             // The render work itself is performed by the WhyRhinoPlugin class.
             Form1 form = new Form1();
-            form.ShowDialog();
+            form.Show();
             return Result.Success;
         }
     }

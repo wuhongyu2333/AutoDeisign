@@ -20,3 +20,10 @@ C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.csp
 C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.CoreCompileInputs.cache
 C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.exe
 C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.pdb
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\RhinoCommon.dll
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\RhinoCommon.xml
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\obj\Debug\WhyWindowsForms.csproj.CopyComplete
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\Eto.dll
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\Rhino.UI.dll
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\Eto.xml
+C:\Users\90434\Desktop\AutoDeisign\WhyWindowsForms\bin\Debug\Newtonsoft.Json.Rhino.dll

@@ -1,10 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "s3fp7Pj3FD7NGJKlpeo8zTENuPA/ZJfzWtppjYIlasTti+5ZwQJQUCrARHe0UUu6JvgvWqYf47N+eUZnPn226A==",
+  "dgSpecHash": "3YW0DoKCv4KsnKB/aGyUnvlgB4hjEYs0Csz+1Gwhk0T8GIzWrWUXDC7m5eqbuZ1ed8e3Ta2l4hFyoS2vY6FY3w==",
   "success": true,
   "projectFilePath": "C:\\Users\\90434\\Desktop\\AutoDeisign\\WhyRhinoPlugin\\WhyRhinoPlugin.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\90434\\.nuget\\packages\\grasshopper\\7.3.21053.23031\\grasshopper.7.3.21053.23031.nupkg.sha512",
     "C:\\Users\\90434\\.nuget\\packages\\rhinocommon\\7.13.21348.13001\\rhinocommon.7.13.21348.13001.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "检测到的包版本在依赖项约束之外: Grasshopper 7.3.21053.23031 需要 RhinoCommon (= 7.3.21053.23031)，但版本 RhinoCommon 7.13.21348.13001 已解决。",
+      "libraryId": "RhinoCommon",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.8"
+      ]
+    }
+  ]
 }

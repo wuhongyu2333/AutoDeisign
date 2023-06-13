@@ -44,6 +44,10 @@
         "net48": {
           "targetAlias": "net48",
           "dependencies": {
+            "Grasshopper": {
+              "target": "Package",
+              "version": "[7.3.21053.23031, )"
+            },
             "RhinoCommon": {
               "include": "Compile, Build",
               "target": "Package",

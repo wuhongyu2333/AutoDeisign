@@ -11,3 +11,16 @@ D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.exe
 D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.pdb
 D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.exe.config
 D:\ECADI\WhyRhinoPlugin\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.csproj.CopyComplete
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\bin\Debug\net48\WhyRhinoPlugin.rhp
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\bin\Debug\net48\WhyRhinoPlugin.pdb
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.exe
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.pdb
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\bin\Debug\net48\WhyWindowsForms.exe.config
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.csproj.AssemblyReference.cache
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.AssemblyInfoInputs.cache
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.AssemblyInfo.cs
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.csproj.CoreCompileInputs.cache
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.csproj.CopyComplete
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.rhp
+C:\Users\90434\Desktop\AutoDeisign\WhyRhinoPlugin\obj\Debug\net48\WhyRhinoPlugin.pdb
