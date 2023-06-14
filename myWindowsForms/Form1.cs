@@ -15,12 +15,13 @@ using Rhino.Input;
 using Rhino.Input.Custom;
 using Rhino.Geometry;
 using Rhino.Collections;
-
+using System.Drawing.Text;
 
 namespace myWindowsForms
 {
     public partial class Form1 : Form
     {
+
         //变量声明
         ObjRef outface;
         ObjRef inface;
@@ -31,14 +32,15 @@ namespace myWindowsForms
         List<List<Line>> wall = new List<List<Line>>();
         List<List<Line>> brace1 = new List<List<Line>>();
         List<List<Line>> brace2 = new List<List<Line>>();
-        List<int> visible_flr = new List<int>();
-        bool visible_all = true;
-        bool visible_column = false;
-        bool visible_beam1 = false;
-        bool visible_beam2 = false;
-        bool visible_wall = false;
-        bool visible_brace1 = false;
-        bool visible_brace2 = false;
+
+        List<int> highlight_all = new List<int>();
+        List<int> highlight_flr = new List<int>();
+        bool highlight_column = true;
+        bool highlight_beam1 = true;
+        bool highlight_beam2 = true;
+        bool highlight_wall = true;
+        bool highlight_brace1 = true;
+        bool highlight_brace2 = true;
 
 
         public int numflr;
@@ -63,10 +65,15 @@ namespace myWindowsForms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle93 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle94 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle95 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle96 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.button36 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -95,24 +102,13 @@ namespace myWindowsForms
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.trackBar4 = new System.Windows.Forms.TrackBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -160,20 +156,30 @@ namespace myWindowsForms
             this.帮助文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.trackBar4 = new System.Windows.Forms.TrackBar();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -187,6 +193,12 @@ namespace myWindowsForms
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -196,36 +208,44 @@ namespace myWindowsForms
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.Location = new System.Drawing.Point(0, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(909, 428);
+            this.tabControl1.Size = new System.Drawing.Size(948, 448);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button36);
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(115)))), ((int)(((byte)(180)))));
             this.tabPage1.Controls.Add(this.panel2);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.panel3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(901, 400);
+            this.tabPage1.Size = new System.Drawing.Size(940, 415);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "线框模型";
-            this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.panel2.Controls.Add(this.button36);
+            this.panel2.Controls.Add(this.groupBox4);
+            this.panel2.Location = new System.Drawing.Point(720, 20);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 380);
+            this.panel2.TabIndex = 17;
             // 
             // button36
             // 
-            this.button36.Location = new System.Drawing.Point(729, 363);
+            this.button36.Location = new System.Drawing.Point(11, 343);
             this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(161, 29);
+            this.button36.Size = new System.Drawing.Size(175, 29);
             this.button36.TabIndex = 15;
             this.button36.Text = "下一步";
             this.button36.UseVisualStyleBackColor = true;
@@ -234,9 +254,12 @@ namespace myWindowsForms
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.panel4);
-            this.groupBox4.Location = new System.Drawing.Point(723, 24);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox4.ForeColor = System.Drawing.Color.White;
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(167, 203);
+            this.groupBox4.Size = new System.Drawing.Size(200, 203);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "构件高亮";
@@ -247,9 +270,9 @@ namespace myWindowsForms
             this.panel4.Controls.Add(this.panel7);
             this.panel4.Controls.Add(this.button18);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 19);
+            this.panel4.Location = new System.Drawing.Point(3, 21);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(161, 181);
+            this.panel4.Size = new System.Drawing.Size(194, 179);
             this.panel4.TabIndex = 13;
             // 
             // tableLayoutPanel5
@@ -265,75 +288,80 @@ namespace myWindowsForms
             this.tableLayoutPanel5.Controls.Add(this.button22, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button21, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 79);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 77);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(161, 102);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(194, 102);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // button26
             // 
             this.button26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button26.Image = global::myWindowsForms.Properties.Resources.roof;
-            this.button26.Location = new System.Drawing.Point(111, 54);
+            this.button26.Location = new System.Drawing.Point(138, 54);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(45, 45);
             this.button26.TabIndex = 5;
             this.toolTip1.SetToolTip(this.button26, "环带桁架");
             this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
             // button25
             // 
             this.button25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button25.Image = global::myWindowsForms.Properties.Resources.joist;
-            this.button25.Location = new System.Drawing.Point(57, 54);
+            this.button25.Location = new System.Drawing.Point(73, 54);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(45, 45);
             this.button25.TabIndex = 4;
             this.toolTip1.SetToolTip(this.button25, "伸臂桁架");
             this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
             // 
             // button24
             // 
             this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button24.Image = global::myWindowsForms.Properties.Resources.brick_wall;
-            this.button24.Location = new System.Drawing.Point(3, 54);
+            this.button24.Location = new System.Drawing.Point(8, 54);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(47, 45);
             this.button24.TabIndex = 3;
             this.toolTip1.SetToolTip(this.button24, "核心筒墙");
             this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
             // button23
             // 
             this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button23.Image = global::myWindowsForms.Properties.Resources.beam__1_;
-            this.button23.Location = new System.Drawing.Point(111, 3);
+            this.button23.Location = new System.Drawing.Point(138, 3);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(45, 45);
             this.button23.TabIndex = 2;
             this.toolTip1.SetToolTip(this.button23, "主梁");
             this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // button22
             // 
             this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button22.Image = global::myWindowsForms.Properties.Resources.beam;
-            this.button22.Location = new System.Drawing.Point(57, 3);
+            this.button22.Location = new System.Drawing.Point(73, 3);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(45, 45);
             this.button22.TabIndex = 1;
             this.toolTip1.SetToolTip(this.button22, "圈梁");
             this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // button21
             // 
             this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button21.BackColor = System.Drawing.Color.Transparent;
             this.button21.Image = global::myWindowsForms.Properties.Resources.architecture;
-            this.button21.Location = new System.Drawing.Point(4, 3);
+            this.button21.Location = new System.Drawing.Point(9, 3);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(45, 45);
             this.button21.TabIndex = 0;
@@ -346,9 +374,9 @@ namespace myWindowsForms
             this.panel7.Controls.Add(this.comboBox1);
             this.panel7.Controls.Add(this.button19);
             this.panel7.Controls.Add(this.button20);
-            this.panel7.Location = new System.Drawing.Point(71, 1);
+            this.panel7.Location = new System.Drawing.Point(73, 1);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(90, 57);
+            this.panel7.Size = new System.Drawing.Size(121, 57);
             this.panel7.TabIndex = 14;
             // 
             // comboBox1
@@ -360,28 +388,37 @@ namespace myWindowsForms
             "楼层选择"});
             this.comboBox1.Location = new System.Drawing.Point(0, 0);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(90, 22);
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 10;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button19
             // 
+            this.button19.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button19.ForeColor = System.Drawing.Color.Black;
             this.button19.Image = global::myWindowsForms.Properties.Resources.up_arrow;
             this.button19.Location = new System.Drawing.Point(0, 32);
             this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(45, 25);
+            this.button19.Size = new System.Drawing.Size(60, 25);
             this.button19.TabIndex = 11;
+            this.button19.Text = "上层";
             this.button19.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // button20
             // 
+            this.button20.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button20.ForeColor = System.Drawing.Color.Black;
             this.button20.Image = global::myWindowsForms.Properties.Resources.down_arrow;
-            this.button20.Location = new System.Drawing.Point(45, 32);
+            this.button20.Location = new System.Drawing.Point(61, 32);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(45, 25);
+            this.button20.Size = new System.Drawing.Size(60, 25);
             this.button20.TabIndex = 12;
+            this.button20.Text = "下层";
             this.button20.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button18
             // 
@@ -395,19 +432,25 @@ namespace myWindowsForms
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkGray;
-            this.panel1.Location = new System.Drawing.Point(709, 6);
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
+            this.panel1.Location = new System.Drawing.Point(340, 20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 411);
-            this.panel1.TabIndex = 6;
+            this.panel1.Size = new System.Drawing.Size(360, 380);
+            this.panel1.TabIndex = 16;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tableLayoutPanel4);
             this.groupBox3.Controls.Add(this.dataGridView3);
-            this.groupBox3.Location = new System.Drawing.Point(338, 195);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox3.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(0, 178);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(361, 202);
+            this.groupBox3.Size = new System.Drawing.Size(360, 202);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "腰部桁架";
@@ -426,7 +469,7 @@ namespace myWindowsForms
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(355, 34);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(354, 34);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // button15
@@ -457,7 +500,7 @@ namespace myWindowsForms
             this.button17.Image = global::myWindowsForms.Properties.Resources.check;
             this.button17.Location = new System.Drawing.Point(239, 3);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(113, 28);
+            this.button17.Size = new System.Drawing.Size(112, 28);
             this.button17.TabIndex = 2;
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
@@ -465,6 +508,14 @@ namespace myWindowsForms
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
+            dataGridViewCellStyle91.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle91.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle91.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle91.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle91.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle91.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle91.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle91;
             this.dataGridView3.ColumnHeadersHeight = 30;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -479,13 +530,13 @@ namespace myWindowsForms
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidth = 15;
             this.dataGridView3.RowTemplate.Height = 30;
-            this.dataGridView3.Size = new System.Drawing.Size(355, 143);
+            this.dataGridView3.Size = new System.Drawing.Size(354, 143);
             this.dataGridView3.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle92.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle92;
             this.dataGridViewTextBoxColumn1.FillWeight = 90F;
             this.dataGridViewTextBoxColumn1.HeaderText = "起始层";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -524,63 +575,42 @@ namespace myWindowsForms
             this.Column16.Name = "Column16";
             this.Column16.Width = 45;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.DarkGray;
-            this.panel2.Location = new System.Drawing.Point(325, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 411);
-            this.panel2.TabIndex = 1;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Controls.Add(this.trackBar1, 2, 0);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.textBox9, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.textBox8, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel11, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.panel10, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel9, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label6, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.trackBar2, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.trackBar3, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.trackBar4, 2, 3);
-            this.tableLayoutPanel2.Controls.Add(this.textBox1, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.textBox2, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox3, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.textBox4, 3, 2);
-            this.tableLayoutPanel2.Controls.Add(this.textBox5, 3, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label7, 1, 3);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(341, 24);
+            this.tableLayoutPanel2.Controls.Add(this.textBox3, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.textBox2, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(317, 140);
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(348, 140);
             this.tableLayoutPanel2.TabIndex = 3;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBar1.Location = new System.Drawing.Point(160, 3);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(120, 29);
-            this.trackBar1.TabIndex = 0;
-            this.trackBar1.TickFrequency = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 35);
+            this.label1.Size = new System.Drawing.Size(98, 46);
             this.label1.TabIndex = 1;
             this.label1.Text = "核心筒柱数";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -589,9 +619,10 @@ namespace myWindowsForms
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 35);
+            this.label2.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(3, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 35);
+            this.label2.Size = new System.Drawing.Size(98, 46);
             this.label2.TabIndex = 2;
             this.label2.Text = "角柱数";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -600,141 +631,55 @@ namespace myWindowsForms
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 70);
+            this.label3.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(3, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 35);
+            this.label3.Size = new System.Drawing.Size(98, 48);
             this.label3.TabIndex = 3;
             this.label3.Text = "基底标高";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 35);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "外柱偏移量";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(129, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(25, 35);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "0";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(129, 35);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 35);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "0";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // trackBar2
-            // 
-            this.trackBar2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBar2.Location = new System.Drawing.Point(160, 38);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(120, 29);
-            this.trackBar2.TabIndex = 7;
-            // 
-            // trackBar3
-            // 
-            this.trackBar3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBar3.Location = new System.Drawing.Point(160, 73);
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(120, 29);
-            this.trackBar3.TabIndex = 8;
-            // 
-            // trackBar4
-            // 
-            this.trackBar4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBar4.Location = new System.Drawing.Point(160, 108);
-            this.trackBar4.Name = "trackBar4";
-            this.trackBar4.Size = new System.Drawing.Size(120, 29);
-            this.trackBar4.TabIndex = 9;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(129, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(25, 23);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.Text = "0";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // textBox2
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(286, 3);
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(280, 11);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(28, 23);
+            this.textBox2.Size = new System.Drawing.Size(65, 23);
             this.textBox2.TabIndex = 11;
             this.textBox2.Text = "10";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox3
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(286, 38);
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Location = new System.Drawing.Point(280, 57);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(28, 23);
+            this.textBox3.Size = new System.Drawing.Size(65, 23);
             this.textBox3.TabIndex = 12;
             this.textBox3.Text = "0";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox4
             // 
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Location = new System.Drawing.Point(286, 73);
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Location = new System.Drawing.Point(280, 104);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(28, 23);
+            this.textBox4.Size = new System.Drawing.Size(65, 23);
             this.textBox4.TabIndex = 13;
             this.textBox4.Text = "0";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox5
-            // 
-            this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox5.Location = new System.Drawing.Point(286, 108);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(28, 23);
-            this.textBox5.TabIndex = 14;
-            this.textBox5.Text = "0";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(129, 105);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 35);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "0";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.panel3.Location = new System.Drawing.Point(20, 20);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(316, 394);
+            this.panel3.Size = new System.Drawing.Size(300, 380);
             this.panel3.TabIndex = 2;
             // 
             // groupBox2
@@ -742,9 +687,11 @@ namespace myWindowsForms
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Controls.Add(this.dataGridView2);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 144);
+            this.groupBox2.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(0, 151);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(316, 250);
+            this.groupBox2.Size = new System.Drawing.Size(300, 229);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "层高表";
@@ -760,11 +707,11 @@ namespace myWindowsForms
             this.tableLayoutPanel1.Controls.Add(this.button7, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button8, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 213);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 192);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(310, 34);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(294, 34);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // button6
@@ -773,7 +720,7 @@ namespace myWindowsForms
             this.button6.Image = global::myWindowsForms.Properties.Resources.add;
             this.button6.Location = new System.Drawing.Point(3, 3);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(97, 28);
+            this.button6.Size = new System.Drawing.Size(91, 28);
             this.button6.TabIndex = 0;
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -782,9 +729,9 @@ namespace myWindowsForms
             // 
             this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button7.Image = global::myWindowsForms.Properties.Resources.delete;
-            this.button7.Location = new System.Drawing.Point(106, 3);
+            this.button7.Location = new System.Drawing.Point(100, 3);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(97, 28);
+            this.button7.Size = new System.Drawing.Size(91, 28);
             this.button7.TabIndex = 1;
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -793,9 +740,9 @@ namespace myWindowsForms
             // 
             this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button8.Image = global::myWindowsForms.Properties.Resources.check;
-            this.button8.Location = new System.Drawing.Point(209, 3);
+            this.button8.Location = new System.Drawing.Point(197, 3);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(98, 28);
+            this.button8.Size = new System.Drawing.Size(94, 28);
             this.button8.TabIndex = 2;
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
@@ -803,38 +750,58 @@ namespace myWindowsForms
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
+            dataGridViewCellStyle93.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle93.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle93.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle93.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle93.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle93.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle93.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle93;
             this.dataGridView2.ColumnHeadersHeight = 30;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column10,
             this.Column11,
             this.Column12});
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 19);
+            this.dataGridView2.Location = new System.Drawing.Point(3, 21);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 15;
             this.dataGridView2.RowTemplate.Height = 30;
-            this.dataGridView2.Size = new System.Drawing.Size(310, 191);
+            this.dataGridView2.Size = new System.Drawing.Size(294, 165);
             this.dataGridView2.TabIndex = 1;
             // 
             // Column10
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column10.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle94.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle94.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle94.ForeColor = System.Drawing.Color.Black;
+            this.Column10.DefaultCellStyle = dataGridViewCellStyle94;
             this.Column10.FillWeight = 90F;
             this.Column10.HeaderText = "起始层";
             this.Column10.Name = "Column10";
             this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column10.Width = 93;
             // 
             // Column11
             // 
+            dataGridViewCellStyle95.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle95.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle95.ForeColor = System.Drawing.Color.Black;
+            this.Column11.DefaultCellStyle = dataGridViewCellStyle95;
             this.Column11.FillWeight = 90F;
             this.Column11.HeaderText = "终止层";
             this.Column11.Name = "Column11";
             this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column11.Width = 93;
             // 
             // Column12
             // 
+            dataGridViewCellStyle96.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle96.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle96.ForeColor = System.Drawing.Color.Black;
+            this.Column12.DefaultCellStyle = dataGridViewCellStyle96;
             this.Column12.HeaderText = "层高(mm)";
             this.Column12.Name = "Column12";
             this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -842,16 +809,19 @@ namespace myWindowsForms
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
             this.button5.ContextMenuStrip = this.contextMenuStrip2;
+            this.button5.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.Image = global::myWindowsForms.Properties.Resources.cube;
-            this.button5.Location = new System.Drawing.Point(166, 91);
+            this.button5.Location = new System.Drawing.Point(153, 91);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(140, 40);
             this.button5.TabIndex = 2;
             this.button5.Text = "选择核心筒";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button5, "核心筒");
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // contextMenuStrip2
@@ -872,16 +842,20 @@ namespace myWindowsForms
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
             this.button4.ContextMenuStrip = this.contextMenuStrip1;
+            this.button4.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.Image = global::myWindowsForms.Properties.Resources.burj_khalifa;
-            this.button4.Location = new System.Drawing.Point(9, 91);
+            this.button4.Location = new System.Drawing.Point(6, 91);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(140, 40);
             this.button4.TabIndex = 1;
             this.button4.Text = "选择外立面";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button4, "外立面");
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // contextMenuStrip1
@@ -904,9 +878,11 @@ namespace myWindowsForms
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("幼圆", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(316, 73);
+            this.groupBox1.Size = new System.Drawing.Size(300, 73);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "超高层结构体系";
@@ -928,21 +904,21 @@ namespace myWindowsForms
             this.tableLayoutPanel3.Controls.Add(this.button11, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.button12, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 21);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(310, 51);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(294, 49);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // button14
             // 
             this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button14.Image = global::myWindowsForms.Properties.Resources._6;
-            this.button14.Location = new System.Drawing.Point(261, 3);
+            this.button14.Location = new System.Drawing.Point(248, 3);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(42, 45);
+            this.button14.Size = new System.Drawing.Size(42, 43);
             this.button14.TabIndex = 5;
             this.toolTip1.SetToolTip(this.button14, "巨型结构");
             this.button14.UseVisualStyleBackColor = true;
@@ -950,10 +926,11 @@ namespace myWindowsForms
             // button9
             // 
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.button9.ForeColor = System.Drawing.Color.White;
             this.button9.Image = global::myWindowsForms.Properties.Resources._1;
             this.button9.Location = new System.Drawing.Point(3, 3);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(45, 45);
+            this.button9.Size = new System.Drawing.Size(43, 43);
             this.button9.TabIndex = 0;
             this.toolTip1.SetToolTip(this.button9, "框架核心筒");
             this.button9.UseVisualStyleBackColor = true;
@@ -962,9 +939,9 @@ namespace myWindowsForms
             // 
             this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button10.Image = global::myWindowsForms.Properties.Resources._2;
-            this.button10.Location = new System.Drawing.Point(55, 3);
+            this.button10.Location = new System.Drawing.Point(52, 3);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(42, 45);
+            this.button10.Size = new System.Drawing.Size(42, 43);
             this.button10.TabIndex = 1;
             this.toolTip1.SetToolTip(this.button10, "框架核心筒+伸臂桁架");
             this.button10.UseVisualStyleBackColor = true;
@@ -973,9 +950,9 @@ namespace myWindowsForms
             // 
             this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button13.Image = global::myWindowsForms.Properties.Resources._5;
-            this.button13.Location = new System.Drawing.Point(208, 3);
+            this.button13.Location = new System.Drawing.Point(199, 3);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(42, 45);
+            this.button13.Size = new System.Drawing.Size(42, 43);
             this.button13.TabIndex = 4;
             this.toolTip1.SetToolTip(this.button13, "外周斜交网筒+内筒");
             this.button13.UseVisualStyleBackColor = true;
@@ -984,9 +961,9 @@ namespace myWindowsForms
             // 
             this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button11.Image = global::myWindowsForms.Properties.Resources._3;
-            this.button11.Location = new System.Drawing.Point(106, 3);
+            this.button11.Location = new System.Drawing.Point(101, 3);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(42, 45);
+            this.button11.Size = new System.Drawing.Size(42, 43);
             this.button11.TabIndex = 2;
             this.toolTip1.SetToolTip(this.button11, "外周框筒+内筒");
             this.button11.UseVisualStyleBackColor = true;
@@ -995,9 +972,9 @@ namespace myWindowsForms
             // 
             this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button12.Image = global::myWindowsForms.Properties.Resources._4;
-            this.button12.Location = new System.Drawing.Point(157, 3);
+            this.button12.Location = new System.Drawing.Point(150, 3);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(42, 45);
+            this.button12.Size = new System.Drawing.Size(42, 43);
             this.button12.TabIndex = 3;
             this.toolTip1.SetToolTip(this.button12, "外周支撑筒+内筒");
             this.button12.UseVisualStyleBackColor = true;
@@ -1007,10 +984,10 @@ namespace myWindowsForms
             this.tabPage2.AutoScroll = true;
             this.tabPage2.Controls.Add(this.panel6);
             this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(901, 400);
+            this.tabPage2.Size = new System.Drawing.Size(940, 415);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "荷载施加";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1088,7 +1065,7 @@ namespace myWindowsForms
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 20;
-            this.dataGridView1.Size = new System.Drawing.Size(895, 361);
+            this.dataGridView1.Size = new System.Drawing.Size(934, 361);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
@@ -1143,18 +1120,18 @@ namespace myWindowsForms
             // 
             // tabPage3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(901, 400);
+            this.tabPage3.Size = new System.Drawing.Size(940, 415);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "截面初始化";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(901, 400);
+            this.tabPage4.Size = new System.Drawing.Size(940, 415);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "前处理参数设置";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1180,19 +1157,146 @@ namespace myWindowsForms
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.保存ToolStripMenuItem,
             this.设置ToolStripMenuItem,
             this.帮助文件ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(909, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(948, 25);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.textBox5);
+            this.panel9.Controls.Add(this.trackBar1);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(141, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(133, 40);
+            this.panel9.TabIndex = 17;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.White;
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBox5.Location = new System.Drawing.Point(0, 24);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(133, 16);
+            this.textBox5.TabIndex = 7;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.trackBar1.Location = new System.Drawing.Point(0, 0);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(133, 45);
+            this.trackBar1.TabIndex = 6;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.textBox6);
+            this.panel10.Controls.Add(this.trackBar2);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(141, 49);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(133, 40);
+            this.panel10.TabIndex = 18;
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.White;
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBox6.Location = new System.Drawing.Point(0, 24);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(133, 16);
+            this.textBox6.TabIndex = 7;
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.trackBar2.Location = new System.Drawing.Point(0, 0);
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(133, 45);
+            this.trackBar2.TabIndex = 6;
+            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.textBox7);
+            this.panel11.Controls.Add(this.trackBar4);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(141, 95);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(133, 42);
+            this.panel11.TabIndex = 19;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.White;
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBox7.Location = new System.Drawing.Point(0, 26);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(133, 16);
+            this.textBox7.TabIndex = 7;
+            // 
+            // trackBar4
+            // 
+            this.trackBar4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.trackBar4.Location = new System.Drawing.Point(0, 0);
+            this.trackBar4.Name = "trackBar4";
+            this.trackBar4.Size = new System.Drawing.Size(133, 45);
+            this.trackBar4.TabIndex = 6;
+            this.trackBar4.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(107, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(28, 16);
+            this.textBox1.TabIndex = 20;
+            this.textBox1.Text = "0";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Location = new System.Drawing.Point(107, 61);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(28, 16);
+            this.textBox8.TabIndex = 21;
+            this.textBox8.Text = "0";
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.Location = new System.Drawing.Point(107, 108);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(28, 16);
+            this.textBox9.TabIndex = 22;
+            this.textBox9.Text = "0";
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(909, 453);
+            this.ClientSize = new System.Drawing.Size(948, 473);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1204,19 +1308,17 @@ namespace myWindowsForms
             this.Text = "超高层结构智能设计";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1231,10 +1333,26 @@ namespace myWindowsForms
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+        //PrivateFontCollection font = new PrivateFontCollection();
+        //font.AddFontFile(Environment.CurrentDirectory + @"\1-Alibaba-PuHuiTi-Medium.TTF");
+        //var r = font.Families[0].IsStyleAvailable(FontStyle.Regular);
+        //var b = font.Families[0].IsStyleAvailable(FontStyle.Bold);
+        //FontFamily myFontFamily = new FontFamily(font.Families[0].Name, font);
+        //System.Drawing.Font myFont = new System.Drawing.Font(myFontFamily, (float)10.5, FontStyle.Bold);
+        //this.button4.Font = myFont;
 
         //生成结构
         private void generateStructure()
@@ -1509,7 +1627,7 @@ namespace myWindowsForms
                 }
                 waist_hor.Add(temp_waist_hor);
                 beam1.Add(temp_beam1);
-                beam2.Add(temp_beam2);  
+                beam2.Add(temp_beam2);
                 wall.Add(temp_wall);
             }
             //柱
@@ -1576,12 +1694,12 @@ namespace myWindowsForms
                             }
                             for (int k = 0; k < bot.Count / 2; k++)
                             {
-                                temp_brace1.Add(new Line(bot[k], upp[k+1]));
+                                temp_brace1.Add(new Line(bot[k], upp[k + 1]));
                                 //brace1.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                             }
                             for (int k = bot.Count / 2; k < bot.Count; k++)
                             {
-                                temp_brace1.Add(new Line(bot[k], upp[k-1]));
+                                temp_brace1.Add(new Line(bot[k], upp[k - 1]));
                                 //brace1.Insert(new Line(bot[k], upp[k - 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                             }
                         }
@@ -1604,12 +1722,12 @@ namespace myWindowsForms
                             }
                             for (int k = 0; k < bot.Count / 2; k++)
                             {
-                                temp_brace1.Add(new Line(bot[k+1], upp[k]));
+                                temp_brace1.Add(new Line(bot[k + 1], upp[k]));
                                 //brace1.Insert(new Line(bot[k + 1], upp[k]), new GH_Path(temp_waist, j, num_brace++), 0);
                             }
                             for (int k = bot.Count / 2; k < bot.Count; k++)
                             {
-                                temp_brace1.Add(new Line(bot[k-1], upp[k]));
+                                temp_brace1.Add(new Line(bot[k - 1], upp[k]));
                                 //brace1.Insert(new Line(bot[k - 1], upp[k]), new GH_Path(temp_waist, j, num_brace++), 0);
                             }
                         }
@@ -1634,12 +1752,12 @@ namespace myWindowsForms
                             {
                                 if (k % 2 == 0)
                                 {
-                                    temp_brace1.Add(new Line(bot[k], upp[k+1]));
+                                    temp_brace1.Add(new Line(bot[k], upp[k + 1]));
                                     //brace1.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                                 else
                                 {
-                                    temp_brace1.Add(new Line(bot[k+1], upp[k]));
+                                    temp_brace1.Add(new Line(bot[k + 1], upp[k]));
                                     //brace1.Insert(new Line(upp[k], bot[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                             }
@@ -1665,12 +1783,12 @@ namespace myWindowsForms
                             {
                                 if (k % 2 == 1)
                                 {
-                                    temp_brace1.Add(new Line(bot[k], upp[k+1]));
+                                    temp_brace1.Add(new Line(bot[k], upp[k + 1]));
                                     //brace1.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                                 else
                                 {
-                                    temp_brace1.Add(new Line(bot[k+1], upp[k]));
+                                    temp_brace1.Add(new Line(bot[k + 1], upp[k]));
                                     //brace1.Insert(new Line(upp[k], bot[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                             }
@@ -1691,12 +1809,12 @@ namespace myWindowsForms
                             {
                                 if (k % 2 == 1)
                                 {
-                                    temp_brace1.Add(new Line(bot[k], upp[k+1]));
+                                    temp_brace1.Add(new Line(bot[k], upp[k + 1]));
                                     //brace1.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                                 else
                                 {
-                                    temp_brace1.Add(new Line(bot[k+1], upp[k]));
+                                    temp_brace1.Add(new Line(bot[k + 1], upp[k]));
                                     //brace1.Insert(new Line(upp[k], bot[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                             }
@@ -1717,19 +1835,19 @@ namespace myWindowsForms
                             {
                                 if (k % 2 == 0)
                                 {
-                                    temp_brace1.Add(new Line(bot[k], upp[k+1]));
+                                    temp_brace1.Add(new Line(bot[k], upp[k + 1]));
                                     //brace1.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                                 else
                                 {
-                                    temp_brace1.Add(new Line(bot[k+1], upp[k]));
+                                    temp_brace1.Add(new Line(bot[k + 1], upp[k]));
                                     //brace1.Insert(new Line(upp[k], bot[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                             }
                         }
                     }
-                
-                    brace1.Add(temp_brace1 );
+
+                    brace1.Add(temp_brace1);
                 }
             }
 
@@ -1765,7 +1883,7 @@ namespace myWindowsForms
                     {
                         int num_brace = 0;
                         Line line_b = beam1[temp_waist][j];
-                        Line line_u = beam1[temp_waist+1][j];
+                        Line line_u = beam1[temp_waist + 1][j];
                         //Line line_b = beam1[new GH_Path(temp_waist, j), 0];
                         //Line line_u = beam1[new GH_Path(temp_waist + 1, j), 0];
                         List<Point3d> bot = new List<Point3d>();
@@ -1789,12 +1907,12 @@ namespace myWindowsForms
                             }
                             for (int k = 0; k < bot.Count / 2; k++)
                             {
-                                temp_brace2.Add(new Line(bot[k], upp[k+1]));
+                                temp_brace2.Add(new Line(bot[k], upp[k + 1]));
                                 //brace2.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                             }
                             for (int k = bot.Count / 2; k < bot.Count; k++)
                             {
-                                temp_brace2.Add(new Line(bot[k], upp[k-1]));
+                                temp_brace2.Add(new Line(bot[k], upp[k - 1]));
                                 //brace2.Insert(new Line(bot[k], upp[k - 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                             }
                         }
@@ -1817,12 +1935,12 @@ namespace myWindowsForms
                             }
                             for (int k = 0; k < bot.Count / 2; k++)
                             {
-                                temp_brace2.Add(new Line(bot[k+1], upp[k]));
+                                temp_brace2.Add(new Line(bot[k + 1], upp[k]));
                                 //brace2.Insert(new Line(bot[k + 1], upp[k]), new GH_Path(temp_waist, j, num_brace++), 0);
                             }
                             for (int k = bot.Count / 2; k < bot.Count; k++)
                             {
-                                temp_brace2.Add(new Line(bot[k-1], upp[k]));
+                                temp_brace2.Add(new Line(bot[k - 1], upp[k]));
                                 //brace2.Insert(new Line(bot[k - 1], upp[k]), new GH_Path(temp_waist, j, num_brace++), 0);
                             }
                         }
@@ -1847,12 +1965,12 @@ namespace myWindowsForms
                             {
                                 if (k % 2 == 0)
                                 {
-                                    temp_brace2.Add(new Line(bot[k], upp[k+1]));
+                                    temp_brace2.Add(new Line(bot[k], upp[k + 1]));
                                     //brace2.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                                 else
                                 {
-                                    temp_brace2.Add(new Line(bot[k+1], upp[k]));
+                                    temp_brace2.Add(new Line(bot[k + 1], upp[k]));
                                     //brace2.Insert(new Line(upp[k], bot[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                             }
@@ -1878,12 +1996,12 @@ namespace myWindowsForms
                             {
                                 if (k % 2 == 1)
                                 {
-                                    temp_brace2.Add(new Line(bot[k], upp[k+1]));
+                                    temp_brace2.Add(new Line(bot[k], upp[k + 1]));
                                     //brace2.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                                 else
                                 {
-                                    temp_brace2.Add(new Line(bot[k+1], upp[k]));
+                                    temp_brace2.Add(new Line(bot[k + 1], upp[k]));
                                     //brace2.Insert(new Line(upp[k], bot[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                             }
@@ -1904,12 +2022,12 @@ namespace myWindowsForms
                             {
                                 if (k % 2 == 1)
                                 {
-                                    temp_brace2.Add(new Line(bot[k], upp[k+1]));
+                                    temp_brace2.Add(new Line(bot[k], upp[k + 1]));
                                     //brace2.Insert(new Line(bot[k], upp[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                                 else
                                 {
-                                    temp_brace2.Add(new Line(bot[k+1], upp[k]));
+                                    temp_brace2.Add(new Line(bot[k + 1], upp[k]));
                                     //brace2.Insert(new Line(upp[k], bot[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                             }
@@ -1935,7 +2053,7 @@ namespace myWindowsForms
                                 }
                                 else
                                 {
-                                    temp_brace2.Add(new Line(bot[k+1], upp[k]));
+                                    temp_brace2.Add(new Line(bot[k + 1], upp[k]));
                                     //brace2.Insert(new Line(upp[k], bot[k + 1]), new GH_Path(temp_waist, j, num_brace++), 0);
                                 }
                             }
@@ -1945,19 +2063,18 @@ namespace myWindowsForms
                     brace2.Add(temp_brace2);
                 }
             }
-            this.comboBox1.SelectedIndex = 0;  
-            for (int i=0;i<beam1.Count;i++) 
+            this.comboBox1.SelectedIndex = 0;
+            for (int i = 0; i < beam1.Count; i++)
             {
                 this.comboBox1.Items.Add((i + 1).ToString());
+                highlight_flr.Add(i + 1);
+                highlight_all.Add(i + 1);
             }
-             
+
+
             myPaint();
-            myHighlightColumn();
-            myHighlightBeam1();
-            myHighlightBeam2();
-            myHighlightWall();
-            myHighlightBrace1();
-            myHighlightBrace2();
+            myHighlight();
+
         }
         private void myPaint()
         {
@@ -2021,90 +2138,122 @@ namespace myWindowsForms
             }
             RhinoDoc.ActiveDoc.Views.Redraw();
         }
+        private void myHighlight()
+        {
+            myHighlightColumn();
+            myHighlightBeam1();
+            myHighlightBeam2();
+            myHighlightWall();
+            myHighlightBrace1();
+            myHighlightBrace2();
+        }
         private void myHighlightColumn()
         {
-            if (visible_all)
+            if (highlight_column)
             {
-                foreach (var i in column)
+                foreach (var i in highlight_flr)
                 {
-                    foreach (var j in i)
+                    try
                     {
-                        RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        foreach (var j in column[i-2])
+                        {
+                            RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        }
                     }
+                    catch { }
                 }
-                RhinoDoc.ActiveDoc.Views.Redraw();
             }
-
+            RhinoDoc.ActiveDoc.Views.Redraw();
         }
         private void myHighlightBeam1()
         {
-            if (visible_all)
+            if (highlight_beam1)
             {
-                foreach (var i in beam1)
+                foreach (var i in highlight_flr)
                 {
-                    foreach (var j in i)
+                    try
                     {
-                        RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        foreach (var j in beam1[i - 1])
+                        {
+                            RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        }
                     }
+                    catch { }
                 }
-                RhinoDoc.ActiveDoc.Views.Redraw();
             }
+            RhinoDoc.ActiveDoc.Views.Redraw();
         }
         private void myHighlightBeam2()
         {
-            if (visible_all)
+            if (highlight_beam2)
             {
-                foreach (var i in beam2)
+                foreach (var i in highlight_flr)
                 {
-                    foreach (var j in i)
+                    try
                     {
-                        RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        foreach (var j in beam2[i - 1])
+                        {
+                            RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        }
                     }
+                    catch { }
                 }
-                RhinoDoc.ActiveDoc.Views.Redraw();
             }
+            RhinoDoc.ActiveDoc.Views.Redraw();
         }
         private void myHighlightWall()
         {
-            if (visible_all)
+            if (highlight_wall)
             {
-                foreach (var i in wall)
+                foreach (var i in highlight_flr)
                 {
-                    foreach (var j in i)
+                    try
                     {
-                        RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        foreach (var j in wall[i - 1])
+                        {
+                            RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        }
                     }
+                    catch { }
                 }
-                RhinoDoc.ActiveDoc.Views.Redraw();
             }
+            RhinoDoc.ActiveDoc.Views.Redraw();
         }
         private void myHighlightBrace1()
         {
-            if (visible_all)
+            if (highlight_brace1)
             {
-                foreach (var i in brace1)
+                foreach (var i in highlight_flr)
                 {
-                    foreach (var j in i)
+                    try
                     {
-                        RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        foreach (var j in brace1[i - 1])
+                        {
+                            RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        }
                     }
+                    catch { }
                 }
-                RhinoDoc.ActiveDoc.Views.Redraw();
             }
+            RhinoDoc.ActiveDoc.Views.Redraw();
         }
         private void myHighlightBrace2()
         {
-            if (visible_all)
+            if (highlight_brace2)
             {
-                foreach (var i in brace2)
+                foreach (var i in highlight_flr)
                 {
-                    foreach (var j in i)
+                    try
                     {
-                        RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        foreach (var j in brace2[i - 1])
+                        {
+                            RhinoDoc.ActiveDoc.Objects.Select(RhinoDoc.ActiveDoc.Objects.AddLine(j));
+                        }
                     }
+                    catch { }
                 }
-                RhinoDoc.ActiveDoc.Views.Redraw();
             }
+            RhinoDoc.ActiveDoc.Views.Redraw();
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -2207,7 +2356,7 @@ namespace myWindowsForms
             outface = go.Object(0);
             if (outface != null)
             {
-                this.button4.BackColor = Color.FromArgb(128, 50, 72, 1);
+                this.button4.BackColor = Color.FromArgb(255, 195, 0);
                 button4.Update();
             }
 
@@ -2229,7 +2378,7 @@ namespace myWindowsForms
             inface = go.Object(0);
             if (outface != null)
             {
-                this.button5.BackColor = Color.FromArgb(128, 50, 72, 1);
+                this.button5.BackColor = Color.FromArgb(255, 195, 0);
                 button5.Update();
             }
         }
@@ -2362,26 +2511,20 @@ namespace myWindowsForms
 
         private void button18_Click(object sender, EventArgs e)
         {
-            visible_all = !visible_all;
-            if (visible_all)
+            highlight_flr.Clear();
+            if (this.button18.BackColor == Color.Transparent)
             {
-                this.button18.BackColor = Color.FromArgb(128, 50, 72, 1);
-                button18.Update();
+                this.button18.BackColor = Color.FromArgb(255, 195, 0);
+                foreach (var i in highlight_all)
+                {
+                    highlight_flr.Add(i);
+                }
             }
             else
             {
-                RhinoDoc.ActiveDoc.Objects.UnselectAll();
-                RhinoDoc.ActiveDoc.Views.Redraw();
                 this.button18.BackColor = Color.Transparent;
-                button18.Update();
             }
-
-            myHighlightColumn();
-            myHighlightBeam1();
-            myHighlightBeam2();
-            myHighlightWall();
-            myHighlightBrace1();
-            myHighlightBrace2();
+            myHighlight();
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -2389,7 +2532,7 @@ namespace myWindowsForms
             if (this.dataGridView3.SelectedCells.Count == 0)
             {
                 MessageBox.Show("未选中任何单元格", "提示：", MessageBoxButtons.OK);
-                return; 
+                return;
             }
             else
             {
@@ -2399,7 +2542,7 @@ namespace myWindowsForms
                     {
                         MessageBox.Show("未选中任何单元格", "提示：", MessageBoxButtons.OK);
                         return;
-                    } 
+                    }
                     this.dataGridView3.Rows.RemoveAt(cell.RowIndex);
                 }
             }
@@ -2409,7 +2552,7 @@ namespace myWindowsForms
         {
             if (this.dataGridView3.SelectedCells.Count == 0)
             {
-                MessageBox.Show("未设置腰部桁架", "提示：", MessageBoxButtons.OK);
+                MessageBox.Show("此结构将不含腰部桁架", "提示：", MessageBoxButtons.OK);
             }
             else
             {
@@ -2434,7 +2577,158 @@ namespace myWindowsForms
             }
         }
 
+
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (this.comboBox1.SelectedIndex < this.comboBox1.Items.Count - 1)
+            {
+                RhinoDoc.ActiveDoc.Objects.UnselectAll();
+                RhinoDoc.ActiveDoc.Views.Redraw();
+                this.comboBox1.SelectedIndex += 1;
+                highlight_flr.Clear();
+                highlight_flr.Add(this.comboBox1.SelectedIndex);
+                myHighlight();
+            }
+            else
+            {
+                MessageBox.Show("当前为顶层", "提示：", MessageBoxButtons.OK);
+                return;
+            }
+
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (this.comboBox1.SelectedIndex > 0)
+            {
+                RhinoDoc.ActiveDoc.Objects.UnselectAll();
+                RhinoDoc.ActiveDoc.Views.Redraw();
+                this.comboBox1.SelectedIndex -= 1;
+                highlight_flr.Clear();
+                highlight_flr.Add(this.comboBox1.SelectedIndex);
+                myHighlight();
+            }
+            else
+            {
+                MessageBox.Show("当前为底层", "提示：", MessageBoxButtons.OK);
+                return;
+            }
+        }
         private void button21_Click(object sender, EventArgs e)
+        {
+            RhinoDoc.ActiveDoc.Objects.UnselectAll();
+            RhinoDoc.ActiveDoc.Views.Redraw();
+            if (this.button21.BackColor == Color.Transparent)
+            {
+                this.button21.BackColor = Color.FromArgb(255, 195, 0);
+                highlight_column = true;
+            }
+            else
+            {
+                this.button21.BackColor = Color.Transparent;
+                highlight_column = false;
+            }
+            myHighlight();
+        }
+        private void button22_Click(object sender, EventArgs e)
+        {
+            RhinoDoc.ActiveDoc.Objects.UnselectAll();
+            RhinoDoc.ActiveDoc.Views.Redraw();
+            if (this.button22.BackColor == Color.Transparent)
+            {
+                this.button22.BackColor = Color.FromArgb(255, 195, 0);
+                highlight_beam1 = true;
+            }
+            else
+            {
+                this.button22.BackColor = Color.Transparent;
+                highlight_beam1 = false;
+            }
+            myHighlight();
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            RhinoDoc.ActiveDoc.Objects.UnselectAll();
+            RhinoDoc.ActiveDoc.Views.Redraw();
+            if (this.button23.BackColor == Color.Transparent)
+            {
+                this.button23.BackColor = Color.FromArgb(255, 195, 0);
+                highlight_beam2 = true;
+            }
+            else
+            {
+                this.button23.BackColor = Color.Transparent;
+                highlight_beam2 = false;
+            }
+            myHighlight();
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            RhinoDoc.ActiveDoc.Objects.UnselectAll();
+            RhinoDoc.ActiveDoc.Views.Redraw();
+            if (this.button24.BackColor == Color.Transparent)
+            {
+                this.button24.BackColor = Color.FromArgb(255, 195, 0);
+                highlight_wall = true;
+            }
+            else
+            {
+                this.button24.BackColor = Color.Transparent;
+                highlight_wall = false;
+            }
+            myHighlight();
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            RhinoDoc.ActiveDoc.Objects.UnselectAll();
+            RhinoDoc.ActiveDoc.Views.Redraw();
+            if (this.button25.BackColor == Color.Transparent)
+            {
+                this.button25.BackColor = Color.FromArgb(255, 195, 0);
+                highlight_brace1 = true;
+            }
+            else
+            {
+                this.button25.BackColor = Color.Transparent;
+                highlight_brace1 = false;
+            }
+            myHighlight();
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            RhinoDoc.ActiveDoc.Objects.UnselectAll();
+            RhinoDoc.ActiveDoc.Views.Redraw();
+            if (this.button26.BackColor == Color.Transparent)
+            {
+                this.button26.BackColor = Color.FromArgb(255, 195, 0);
+                highlight_brace2 = true;
+            }
+            else
+            {
+                this.button26.BackColor = Color.Transparent;
+                highlight_brace2 = false;
+            }
+            myHighlight();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RhinoDoc.ActiveDoc.Objects.UnselectAll();
+            RhinoDoc.ActiveDoc.Views.Redraw();
+            highlight_flr.Clear();
+            if (int.TryParse(this.comboBox1.SelectedItem.ToString(), out int value))
+            {
+                highlight_flr.Add(value);
+            }
+            myHighlight();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
