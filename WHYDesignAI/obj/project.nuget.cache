@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "f1ntiqQfAWXsd6xy3k0BY8SYkUg9lid/kJJqZqeEVo03wmCHyfjh+NAg+tbUvrg2HFJVQhuVMt82Xt19oV86HQ==",
+  "success": true,
+  "projectFilePath": "D:\\ECADI\\RhinoPluginWHY\\WHYDesignAI\\WHYDesignAI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\90434\\.nuget\\packages\\rhinocommon\\7.13.21348.13001\\rhinocommon.7.13.21348.13001.nupkg.sha512"
+  ],
+  "logs": []
+}

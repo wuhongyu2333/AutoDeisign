@@ -1,0 +1,14 @@
+D:\ECADI\RhinoPluginWHY\myWindowsForms\bin\Debug\myWindowsForms.exe.config
+D:\ECADI\RhinoPluginWHY\myWindowsForms\bin\Debug\myWindowsForms.exe
+D:\ECADI\RhinoPluginWHY\myWindowsForms\bin\Debug\myWindowsForms.pdb
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.csproj.AssemblyReference.cache
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.csproj.SuggestedBindingRedirects.cache
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.Form1.resources
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.Properties.Resources.resources
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.csproj.GenerateResource.cache
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.csproj.CoreCompileInputs.cache
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.exe
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.pdb
+D:\ECADI\RhinoPluginWHY\myWindowsForms\bin\Debug\RhinoCommon.dll
+D:\ECADI\RhinoPluginWHY\myWindowsForms\bin\Debug\RhinoCommon.xml
+D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.csproj.CopyComplete

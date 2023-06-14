@@ -1,0 +1,13 @@
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\bin\Debug\net48\WHYDesignAI.rhp
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\bin\Debug\net48\WHYDesignAI.pdb
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\bin\Debug\net48\myWindowsForms.exe
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\bin\Debug\net48\myWindowsForms.pdb
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\bin\Debug\net48\myWindowsForms.exe.config
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.csproj.AssemblyReference.cache
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.GeneratedMSBuildEditorConfig.editorconfig
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.AssemblyInfoInputs.cache
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.AssemblyInfo.cs
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.csproj.CoreCompileInputs.cache
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.csproj.CopyComplete
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.rhp
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.pdb

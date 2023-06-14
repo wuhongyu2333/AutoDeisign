@@ -1,0 +1,5 @@
+1.安装Rhino.VisualStudio.Windows.2019_7.13.0.vsix，此操作会在VS中安装一个RhinoCommon Plugin for Rhino 7项目模板；
+2.创建一个RhinoCommon Plugin for Rhino 7项目，并在同一解决方案下新建一个WPF项目（即为要开发的插件）；
+3.在RhinoCommand.cs->RhinoCommand中更改EnglishName，是Rhino中的插件名称，将Result RunCommand替换成统一内容；
+4.依赖项右键添加项目引用，将WPF文件添加引用，添加程序集引用；
+5.重新生成解决方案，输出栏.rhp文件地址，Rhino中使用pluginManager，安装.rhp文件，即可在Rhino中输入EnglishName使用；
