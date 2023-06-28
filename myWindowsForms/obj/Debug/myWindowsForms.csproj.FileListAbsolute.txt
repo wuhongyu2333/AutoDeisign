@@ -12,3 +12,4 @@ D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.pdb
 D:\ECADI\RhinoPluginWHY\myWindowsForms\bin\Debug\RhinoCommon.dll
 D:\ECADI\RhinoPluginWHY\myWindowsForms\bin\Debug\RhinoCommon.xml
 D:\ECADI\RhinoPluginWHY\myWindowsForms\obj\Debug\myWindowsForms.csproj.CopyComplete
+D:\ECADI\RhinoPluginWHY\myWindowsForms\bin\Debug\APIFrameworkRef_x64.dll

@@ -11,3 +11,4 @@ D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.csproj.CoreCompi
 D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.csproj.CopyComplete
 D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.rhp
 D:\ECADI\RhinoPluginWHY\WHYDesignAI\obj\Debug\net48\WHYDesignAI.pdb
+D:\ECADI\RhinoPluginWHY\WHYDesignAI\bin\Debug\net48\APIFrameworkRef_x64.dll
