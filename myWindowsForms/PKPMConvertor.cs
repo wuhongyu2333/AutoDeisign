@@ -104,8 +104,15 @@ namespace myWindowsForms
                 standFloor.SetInfoValue(8, int.Parse("3"));//墙钢筋级别
                 realFloor = new RealFloor();
                 realFloor.SetStandFloorIndex(i);
-                realFloor.SetFloorHeight(float.Parse((height[i] - height[i - 1]).ToString()));
-                realFloor.SetBottomElevation(float.Parse(height[i].ToString()));
+                if (i == 1)
+                {
+                    realFloor.SetFloorHeight(float.Parse((height[i - 1]).ToString()));
+                }
+                else
+                {
+                    realFloor.SetFloorHeight(float.Parse((height[i - 1] - height[i - 2]).ToString()));
+                }
+                realFloor.SetBottomElevation(float.Parse(height[i - 1].ToString()));
                 model.AddRealFloor(realFloor);
                 model.SetFloorAssemTable(i, realFloor);
             }
@@ -127,8 +134,8 @@ namespace myWindowsForms
 
                     Point3d pStart = beamLine.From;
                     Point3d pEnd = beamLine.To;
-                    Node startNode = standFloor.AddNode((float)pStart.X, (float)pStart.Y);
-                    Node endNode = standFloor.AddNode((float)pEnd.X, (float)pEnd.Y);
+                    Node startNode = standFloor.AddNode((float)pStart.X * 1000, (float)pStart.Y * 1000);
+                    Node endNode = standFloor.AddNode((float)pEnd.X * 1000, (float)pEnd.Y * 1000);
                     Net net = standFloor.AddLineNet(startNode.GetID(), endNode.GetID());
                     standFloor.AddBeam(beamSectionInt, net.GetID());
                 }
@@ -151,8 +158,8 @@ namespace myWindowsForms
 
                     Point3d pStart = beamLine.From;
                     Point3d pEnd = beamLine.To;
-                    Node startNode = standFloor.AddNode((float)pStart.X, (float)pStart.Y);
-                    Node endNode = standFloor.AddNode((float)pEnd.X, (float)pEnd.Y);
+                    Node startNode = standFloor.AddNode((float)pStart.X * 1000, (float)pStart.Y * 1000);
+                    Node endNode = standFloor.AddNode((float)pEnd.X * 1000, (float)pEnd.Y * 1000);
                     Net net = standFloor.AddLineNet(startNode.GetID(), endNode.GetID());
                     standFloor.AddBeam(beamSectionInt, net.GetID());
                 }
@@ -160,8 +167,8 @@ namespace myWindowsForms
 
             #endregion
 
-            #region 加入墙构件
-            for (int i = 0; i < wall.Count; i++)
+            #region 加入墙构件?
+            for (int i = 0; i < wall.Count - 1; i++)
             {
                 WallSection wallSection = new WallSection();
                 int tempWallTickness = Building.WallSectionList[i];
@@ -173,10 +180,10 @@ namespace myWindowsForms
                 {
                     Point3d pStart = wallLine.From;
                     Point3d pEnd = wallLine.To;
-                    Node startNode = standFloor.AddNode((float)pStart.X, (float)pStart.Y);
-                    Node endNode = standFloor.AddNode((float)pEnd.X, (float)pEnd.Y);
+                    Node startNode = standFloor.AddNode((float)pStart.X * 1000, (float)pStart.Y * 1000);
+                    Node endNode = standFloor.AddNode((float)pEnd.X * 1000, (float)pEnd.Y * 1000);
                     Net net = standFloor.AddLineNet(startNode.GetID(), endNode.GetID());
-                    standFloor.AddWall(wallSectionInt, net.GetID());
+                    standFloor.AddWall(wallSectionInt, net.GetID(), 0, 0, 1000 * (int)(height[i + 1] - height[i]), 1000 * (int)(height[i + 1] - height[i]));
                 }
             }
 
@@ -198,25 +205,29 @@ namespace myWindowsForms
 
                 model.SetCurrentStandFloor(i + 1);
                 standFloor = model.GetCurrentStandFloor();
-                foreach(Line colLine in column[i])
+                foreach (Line colLine in column[i])
                 {
                     Point3d pStart = colLine.From;
                     Point3d pEnd = colLine.To;
-                    int xStart = (int)pStart.X;
-                    int yStart = (int)pStart.Y;
-                    int xEnd = (int)pEnd.X;
-                    int yEnd = (int)pEnd.Y;
-                    if (xStart != xEnd | yStart != yEnd)
-                    {
-                        Node startNode = standFloor.AddNode(xStart, yStart);
-                        Node endNode = standFloor.AddNode(xEnd, yEnd);
-                        standFloor.AddBrace(braceSectionInt, startNode.GetID(), endNode.GetID(), 0, (int)(height[i + 1] - height[i]), 0);
-                    }
-                    else
-                    {
-                        Node startNode = standFloor.AddNode(xStart, yStart);
-                        standFloor.AddColumn(colSectionInt, startNode.GetID());
-                    }
+                    int xStart = (int)(pStart.X * 1000);
+                    int yStart = (int)(pStart.Y * 1000);
+                    int xEnd = (int)(pEnd.X * 1000);
+                    int yEnd = (int)(pEnd.Y * 1000);
+                    Node startNode = standFloor.AddNode(xStart, yStart);
+                    Node endNode = standFloor.AddNode(xEnd, yEnd);
+                    standFloor.AddBrace(braceSectionInt, startNode.GetID(), endNode.GetID(), 0, 1000 * (int)(height[i + 1] - height[i]), 0);
+
+                    //if (xStart != xEnd | yStart != yEnd)
+                    //{
+                    //    Node startNode = standFloor.AddNode(xStart, yStart);
+                    //    Node endNode = standFloor.AddNode(xEnd, yEnd);
+                    //    standFloor.AddBrace(braceSectionInt, startNode.GetID(), endNode.GetID(), 0, 1000*(int)(height[i + 1] - height[i]), 0);
+                    //}
+                    //else
+                    //{
+                    //    Node startNode = standFloor.AddNode(xStart, yStart);
+                    //    standFloor.AddColumn(colSectionInt, startNode.GetID());
+                    //}
                 }
             }
             #endregion
@@ -241,15 +252,15 @@ namespace myWindowsForms
                 {
                     Point3d pStart = braceLine.From;
                     Point3d pEnd = braceLine.To;
-                    int xStart = (int)pStart.X;
-                    int yStart = (int)pStart.Y;
-                    int xEnd = (int)pEnd.X;
-                    int yEnd = (int)pEnd.Y;
+                    int xStart = (int)(pStart.X * 1000);
+                    int yStart = (int)(pStart.Y * 1000);
+                    int xEnd = (int)(pEnd.X * 1000);
+                    int yEnd = (int)(pEnd.Y * 1000);
                     if (xStart != xEnd | yStart != yEnd)
                     {
                         Node startNode = standFloor.AddNode(xStart, yStart);
                         Node endNode = standFloor.AddNode(xEnd, yEnd);
-                        standFloor.AddBrace(braceSectionInt, startNode.GetID(), endNode.GetID(), 0, (int)(height[i + 1] - height[i]), 0);
+                        standFloor.AddBrace(braceSectionInt, startNode.GetID(), endNode.GetID(), 0, 1000 * (int)(height[i + 1] - height[i]), 0);
                     }
                     else
                     {
@@ -280,15 +291,15 @@ namespace myWindowsForms
                 {
                     Point3d pStart = braceLine.From;
                     Point3d pEnd = braceLine.To;
-                    int xStart = (int)pStart.X;
-                    int yStart = (int)pStart.Y;
-                    int xEnd = (int)pEnd.X;
-                    int yEnd = (int)pEnd.Y;
+                    int xStart = (int)(pStart.X * 1000);
+                    int yStart = (int)(pStart.Y * 1000);
+                    int xEnd = (int)(pEnd.X * 1000);
+                    int yEnd = (int)(pEnd.Y * 1000);
                     if (xStart != xEnd | yStart != yEnd)
                     {
                         Node startNode = standFloor.AddNode(xStart, yStart);
                         Node endNode = standFloor.AddNode(xEnd, yEnd);
-                        standFloor.AddBrace(braceSectionInt, startNode.GetID(), endNode.GetID(), 0, (int)(height[i + 1] - height[i]), 0);
+                        standFloor.AddBrace(braceSectionInt, startNode.GetID(), endNode.GetID(), 0, 1000 * (int)(height[i + 1] - height[i]), 0);
                     }
                     else
                     {
@@ -300,8 +311,9 @@ namespace myWindowsForms
             #endregion
 
             model.SavePMModel();
-            SocketClient myClient = new SocketClient(2000);
-            myClient.StartClient();
+            //SocketClient myClient = new SocketClient(2000);
+            //myClient.StartClient();
+            MessageBox.Show("JWS文件生成成功", "提示：", MessageBoxButtons.OK);
         }
         protected void ClearModel(ref Model model)
         {
