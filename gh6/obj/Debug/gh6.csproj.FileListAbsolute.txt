@@ -1,0 +1,6 @@
+D:\ECADI\VS\gh6\obj\Debug\gh6.csproj.AssemblyReference.cache
+D:\ECADI\VS\gh6\obj\Debug\gh6.csproj.CoreCompileInputs.cache
+D:\ECADI\VS\gh6\bin\gh6.dll
+D:\ECADI\VS\gh6\bin\gh6.pdb
+D:\ECADI\VS\gh6\obj\Debug\gh6.dll
+D:\ECADI\VS\gh6\obj\Debug\gh6.pdb

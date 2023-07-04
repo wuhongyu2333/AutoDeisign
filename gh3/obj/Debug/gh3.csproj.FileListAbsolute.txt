@@ -1,0 +1,6 @@
+D:\ECADI\VS\gh3\bin\gh3.dll
+D:\ECADI\VS\gh3\bin\gh3.pdb
+D:\ECADI\VS\gh3\obj\Debug\gh3.csproj.AssemblyReference.cache
+D:\ECADI\VS\gh3\obj\Debug\gh3.csproj.CoreCompileInputs.cache
+D:\ECADI\VS\gh3\obj\Debug\gh3.dll
+D:\ECADI\VS\gh3\obj\Debug\gh3.pdb
