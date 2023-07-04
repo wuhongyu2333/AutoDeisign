@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/alien-outline.svg</file>
+        <file>icons/alpha-v-circle.svg</file>
+        <file>icons/alpha-v-circle-outline.svg</file>
+        <file>icons/animation-play-outline.svg</file>
+        <file>icons/biohazard.svg</file>
+        <file>icons/bomb.svg</file>
+        <file>icons/camera.svg</file>
+        <file>icons/camera-flip.svg</file>
+        <file>icons/camera-image.svg</file>
+        <file>icons/camera-iris.svg</file>
+        <file>icons/camera-plus.svg</file>
+        <file>icons/camera-wireless.svg</file>
+    </qresource>
+</RCC>

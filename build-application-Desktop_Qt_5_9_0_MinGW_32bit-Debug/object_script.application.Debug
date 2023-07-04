@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\myopenglwidget.o
+./debug\member.o
+./debug\qrc_darkstyle.o
+./debug\qrc_lightstyle.o
+./debug\qrc_styles.o
+./debug\qrc_icon.o
+./debug\moc_mainwindow.o
+./debug\moc_myopenglwidget.o
+);

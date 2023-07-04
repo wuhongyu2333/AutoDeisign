@@ -1,0 +1,10 @@
+release/main.o
+release/mainwindow.o
+release/myopenglwidget.o
+release/member.o
+release/qrc_darkstyle.o
+release/qrc_lightstyle.o
+release/qrc_styles.o
+release/qrc_icon.o
+release/moc_mainwindow.o
+release/moc_myopenglwidget.o
